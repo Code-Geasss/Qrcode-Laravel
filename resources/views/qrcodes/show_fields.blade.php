@@ -18,6 +18,10 @@
             <p>{{ $qrcode->product_url }}</p>
         </div>
 
+
+
+
+
         @if($qrcode->id == Auth::user()->id || Auth::user()->role_id <3)
          <!-- User Id Field -->
         <div class="form-group">
