@@ -70,5 +70,23 @@ class Transaction extends Model
         'status' => 'required'
     ];
 
+
+    // one transaction belongs to one Qrcode
+    public function qrcode(){
+
+        return $this->belongsTo('App\Models\Qrcode');
+    }
     
+
+     // one transaction belongs to one user
+     public function user(){
+
+        return $this->belongsTo('App\Models\User');
+    }
+
+     // one transaction belongs to one user
+     public function qrcode_owner(){
+
+        return $this->belongsTo('App\Models\User', 'qrcode_owner_id');
+    }
 }
