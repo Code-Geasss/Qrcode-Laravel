@@ -68,9 +68,14 @@ class User extends Model
     ];
 
     // A user can have many transactions
-    public function transaction(){
+    public function transactions(){
 
         return $this->hasMany('App\Models\Transaction');
     }
     
+
+    public function role(){
+
+        return $this->belongsTo('App\Models\Role');
+    }
 }
