@@ -97,5 +97,9 @@ class Account extends Model
         'paid' => 'required'
     ];
 
+    public function user(){
+
+        return $this->belongsTo('App\Models\User');
+    }
     
 }

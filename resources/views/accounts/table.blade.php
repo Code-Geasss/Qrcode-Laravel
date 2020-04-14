@@ -2,7 +2,9 @@
     <table class="table" id="accounts-table">
         <thead>
             <tr>
-                <th>User</th>
+                <th>
+                    User Name
+                </th>
         <th>Balance</th>
         <th>Total Credit</th>
         <th>Total Debit</th>
@@ -13,17 +15,21 @@
         <tbody>
         @foreach($accounts as $account)
             <tr>
-                <td>{{ $account->user_id }}</td>
-            <td>{{ $account->balance }}</td>
-            <td>{{ $account->total_credit }}</td>
-            <td>{{ $account->total_debit }}</td>
+                <td>
+                    <a href="{{route('accounts.show' , [$account->id])}}">
+                        {{ $account->user['name'] }}
+                    </a>
+                </td>
+            <td>$ {{ number_format($account->balance) }}</td>
+            <td>$ {{ number_format($account->total_credit) }}</td>
+            <td>$ {{ number_format($account->total_debit) }}</td>
             <td>{{ $account->country }}</td>
                 <td>
                     {!! Form::open(['route' => ['accounts.destroy', $account->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('accounts.show', [$account->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                        
                         <a href="{{ route('accounts.edit', [$account->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
-                        {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                    
                     </div>
                     {!! Form::close() !!}
                 </td>

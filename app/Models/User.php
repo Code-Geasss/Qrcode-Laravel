@@ -84,4 +84,10 @@ class User extends Model
 
         return $this->belongsTo('App\Models\Role');
     }
+
+    public function account(){
+
+        return $this->hasOne('App\Models\Account');
+    }
+    
 }

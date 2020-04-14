@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="content-header">
-    <h1 class="pull-left">User: </h1>
+    <h1 class="pull-left">User: {{$user['id']}}</h1>
     <h1 class="pull-right">
         <a href="{{ route('users.edit', [$user->id]) }}" class='btn btn-primary'>Edit Role</a>
         </h1>
