@@ -2,8 +2,9 @@
     <table class="table" id="accountHistories-table">
         <thead>
             <tr>
-                <th>Account Id</th>
+                
         <th>User </th>
+        <th>Account Id</th>
         <th>Message</th>
                 
             </tr>
@@ -11,8 +12,9 @@
         <tbody>
         @foreach($accountHistories as $accountHistory)
             <tr>
-                <td>{{ $accountHistory->account_id }}</td>
+                
             <td>{{ $accountHistory->user['name'] }}</td>
+            <td>{{ $accountHistory->account_id }}</td>
             <td>{{ $accountHistory->message }}</td>
                 
             </tr>

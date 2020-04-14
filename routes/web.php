@@ -31,7 +31,7 @@ Route::get('/home', 'HomeController@index')->middleware('verified');
 Route::group(['middleware' => 'auth'], function(){
 
 
-        Route::resource('roles', 'RoleController');
+        Route::resource('qrcodes', 'QrcodeController');
 
         Route::resource('transactions', 'TransactionController');
 
@@ -50,7 +50,11 @@ Route::group(['middleware' => 'auth'], function(){
 
 
         // only admins can access this....
-        Route::resource('qrcodes', 'QrcodeController')->middleware('checkadmin');
+        Route::resource('roles', 'RoleController')->middleware('checkadmin');
+
+        Route::post('/accounts/apply_for_payout','AccountController@apply_for_payout')->name('accounts.apply_for_payout');
+
+        Route::post('/accounts/mark_as_paid','AccountController@mark_as_paid')->name('accounts.mark_as_paid');
 
 });
 
