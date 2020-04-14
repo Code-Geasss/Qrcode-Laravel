@@ -89,5 +89,10 @@ class User extends Model
 
         return $this->hasOne('App\Models\Account');
     }
+
+    public function account_histories(){
+
+        return $this->hasMany('App\Models\AccountHistory');
+    }
     
 }

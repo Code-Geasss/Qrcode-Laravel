@@ -101,5 +101,10 @@ class Account extends Model
 
         return $this->belongsTo('App\Models\User');
     }
+
+    public function account_histories(){
+
+        return $this->hasMany('App\Models\AccountHistory');
+    }
     
 }

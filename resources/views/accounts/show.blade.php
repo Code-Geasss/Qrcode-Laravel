@@ -19,7 +19,7 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('accounts.show_fields')
-                    <a href="{{ route('accounts.index') }}" class="btn btn-default">Back</a>
+                    
                 </div>
             </div>
         </div>

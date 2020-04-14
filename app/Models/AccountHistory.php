@@ -57,5 +57,8 @@ class AccountHistory extends Model
         'message' => 'required'
     ];
 
-    
+    public function user(){
+
+        return $this->hasOne('App\Models\User');
+    }
 }
