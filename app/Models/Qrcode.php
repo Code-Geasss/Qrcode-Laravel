@@ -80,7 +80,7 @@ class Qrcode extends Model
 
 
     //One Qrcode can have many transactions
-    public function trnasactions(){
+    public function transactions(){
 
         return $this->hasMany('App\Models\Transaction');
     }

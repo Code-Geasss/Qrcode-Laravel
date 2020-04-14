@@ -72,6 +72,12 @@ class User extends Model
 
         return $this->hasMany('App\Models\Transaction');
     }
+
+
+    public function qrcodes(){
+
+        return $this->hasMany('App\Models\Qrcode');
+    }
     
 
     public function role(){

@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use App\Models\Role;
 
 class UserController extends AppBaseController
 {
@@ -80,7 +81,14 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        return view('users.show')->with('user', $user);
+        
+        $transactions = $user->transactions;
+        $qrcodes = $user->qrcodes;
+
+        return view('users.show')
+        ->with('qrcodes', $qrcodes)
+        ->with('transactions', $transactions)
+        ->with('user', $user);
     }
 
     /**
@@ -100,7 +108,11 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        return view('users.edit')->with('user', $user);
+        $roles = Role::all();
+
+        return view('users.edit')
+        ->with('user', $user)
+        ->with('roles', $roles);
     }
 
     /**
@@ -119,6 +131,11 @@ class UserController extends AppBaseController
             Flash::error('User not found');
 
             return redirect(route('users.index'));
+        }
+
+        $input = $request->all();
+        if (!empty($input['password'])){
+            $input['password'] = Hash::make($input['password']);
         }
 
         $user = $this->userRepository->update($request->all(), $id);

@@ -34,3 +34,13 @@
     <p>{{ $user->remember_token }}</p>
 </div>
 
+
+@if($user->id == Auth::user()->id || Auth::user()->role_id <3)
+<h3 class="text-center text-default">Transactions done by you:- </h3>
+    @include('transactions.table')
+@endif
+
+@if($user->id == Auth::user()->id || Auth::user()->role_id <3)
+<h3 class="text-center text-default">Qrcode for your transactions were:- </h3>
+    @include('qrcodes.table')
+@endif

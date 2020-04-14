@@ -4,3 +4,10 @@
     <p>{{ $role->name }}</p>
 </div>
 
+@include('users.table')
+
+
+
+
+
+

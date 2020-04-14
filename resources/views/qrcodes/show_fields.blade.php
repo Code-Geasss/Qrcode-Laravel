@@ -77,3 +77,9 @@
             </p>
         </div>
     </div>
+
+
+@if($qrcode->id == Auth::user()->id || Auth::user()->role_id <3)
+<h3 class="text-center text-default">Transactions done using this Qrcode:- </h3>
+    @include('transactions.table')
+@endif
