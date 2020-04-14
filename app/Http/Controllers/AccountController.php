@@ -190,6 +190,7 @@ class AccountController extends AppBaseController
         Account::where('id', $account->id)->update([
             'applied_for_payout' => 1,
             'paid' => 0
+            
             ]);
 
         AccountHistory::create([
@@ -235,6 +236,7 @@ class AccountController extends AppBaseController
         Account::where('id', $account->id)->update([
             'applied_for_payout' => 0,
             'paid' => 1
+      
             ]);
 
         AccountHistory::create([

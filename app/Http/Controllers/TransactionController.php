@@ -9,6 +9,8 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Auth;
+use App\Models\Transaction;
 
 class TransactionController extends AppBaseController
 {
@@ -29,7 +31,15 @@ class TransactionController extends AppBaseController
      */
     public function index(Request $request)
     {
+        if(Auth::user()->role_id < 3){
+        
+        $this->transactionRepository->pushCriteria(new RequestCriteria($request));
         $transactions = $this->transactionRepository->all();
+        }
+        else{
+
+        $transactions = Transaction::where('user_id', Auth::user()->id);
+        }
 
         return view('transactions.index')
             ->with('transactions', $transactions);

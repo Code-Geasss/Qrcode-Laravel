@@ -54,7 +54,19 @@ Route::group(['middleware' => 'auth'], function(){
 
         Route::post('/accounts/apply_for_payout','AccountController@apply_for_payout')->name('accounts.apply_for_payout');
 
-        Route::post('/accounts/mark_as_paid','AccountController@mark_as_paid')->name('accounts.mark_as_paid');
+        Route::post('/accounts/mark_as_paid','AccountController@mark_as_paid')
+        ->name('accounts.mark_as_paid')
+        ->middleware('checkadmin')
+        ->middleware('checkmoderator');
+
+        Route::get('/accounts', 'AccountController@index')->name('accounts.index')->middleware('checkmoderator');
+
+        Route::get('/accounts/create', 'AccountController@create')->name('accounts.create')->middleware('checkadmin');
+
+
+        Route::get('/accountHistories', 'AccountHistoryController@index')->name('accountHistories.index')->middleware('checkmoderator');
+
+        Route::get('/accountHistories/create', 'AccountHistoryController@create')->name('accountHistories.create')->middleware('checkadmin');
 
 });
 
