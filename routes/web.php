@@ -37,6 +37,10 @@ Route::group(['middleware' => 'auth'], function(){
 
         Route::resource('users', 'UserController');
 
+        Route::resource('accounts', 'AccountController');
+
+        Route::resource('accountHistories', 'AccountHistoryController');
+
         //only moderators and admins can access
         Route::group(['middleware' => 'checkmoderator'], function(){
 
@@ -49,3 +53,4 @@ Route::group(['middleware' => 'auth'], function(){
         Route::resource('qrcodes', 'QrcodeController')->middleware('checkadmin');
 
 });
+
