@@ -22,7 +22,7 @@
 
 
 
-        @if($qrcode->id == Auth::user()->id || Auth::user()->role_id <3)
+        @if(!Auth::guest() && ($qrcode->id == Auth::user()->id || Auth::user()->role_id <3))
          <!-- User Id Field -->
         <div class="form-group">
             {!! Form::label('id', 'Qrcode Id:') !!}
@@ -71,8 +71,10 @@
                     
         </div>
 
-    </div>
+    
 @endif
+</div>
+
 
     <div class="col-md-6">
        <!-- Qrcode Path Field -->
@@ -86,7 +88,7 @@
 
 
 <div class="col-md-12">
-@if($qrcode->id == Auth::user()->id || Auth::user()->role_id <3)
+@if(!Auth::guest() && ($qrcode->id == Auth::user()->id || Auth::user()->role_id <3))
 <h3 class="text-center text-default">Transactions done using this Qrcode:- </h3>
     @include('transactions.table')
 @endif

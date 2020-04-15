@@ -73,4 +73,4 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 
-Route::get('/qrcodes/{id}', 'QrcodeController@show')->name('qrcodes.show');
+Route::get('/qrcodes/{id?}', 'QrcodeController@show')->name('qrcodes.show');
