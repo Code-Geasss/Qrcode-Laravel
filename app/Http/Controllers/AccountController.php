@@ -73,9 +73,14 @@ class AccountController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
+    public function show($id = null)
     {
-        $account = $this->accountRepository->find($id);
+        if(!isset($id)){
+            $account = Account::where('user_id', Auth::user()->id)->first();
+        }
+        else{
+            $account = $this->accountRepository->find($id);
+        }
 
         if (empty($account)) {
             Flash::error('Account not found');

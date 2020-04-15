@@ -31,13 +31,15 @@ Route::get('/home', 'HomeController@index')->middleware('verified');
 Route::group(['middleware' => 'auth'], function(){
 
 
-        Route::resource('qrcodes', 'QrcodeController');
+        Route::resource('qrcodes', 'QrcodeController')->except('show');
 
         Route::resource('transactions', 'TransactionController');
 
         Route::resource('users', 'UserController');
 
-        Route::resource('accounts', 'AccountController');
+        Route::resource('accounts', 'AccountController')->except(['show']);
+
+        Route::get('/accounts/show/{id?}','AccountController@show')->name('accounts.show');
 
         Route::resource('accountHistories', 'AccountHistoryController');
 
@@ -70,3 +72,5 @@ Route::group(['middleware' => 'auth'], function(){
 
 });
 
+
+Route::get('/qrcodes/{id}', 'QrcodeController@show')->name('qrcodes.show');

@@ -15,7 +15,7 @@
          <!-- Product Url Field -->
          <div class="form-group">
             {!! Form::label('product_url', 'Product Url:') !!}
-            <p>{{ $qrcode->product_url }}</p>
+            <p><a href="{{ $qrcode->product_url }}" >{{ $qrcode->product_url }}</a></p>
         </div>
 
 
@@ -29,10 +29,16 @@
             <p>{{ $qrcode->id }}</p>
         </div>
 
+         <!-- Website Field -->
+         <div class="form-group">
+            {!! Form::label('user_id', 'User Name:') !!}
+            <p>{{ $qrcode->user['name'] }}</p>
+        </div>
+
         <!-- Website Field -->
         <div class="form-group">
             {!! Form::label('website', 'Website:') !!}
-            <p>{{ $qrcode->website }}</p>
+            <p><a href="{{ $qrcode->website }}" >{{ $qrcode->website }}</a></p>
         </div>
 
         <!-- Company Name Field -->
@@ -47,7 +53,7 @@
         <!-- Callback Url Field -->
         <div class="form-group">
             {!! Form::label('callback_url', 'Callback Url:') !!}
-            <p>{{ $qrcode->callback_url }}</p>
+            <p><a href="{{ $qrcode->callback_url }}" >{{ $qrcode->callback_url }}</a></p>
         </div>
 
 
@@ -79,7 +85,9 @@
     </div>
 
 
+<div class="col-md-12">
 @if($qrcode->id == Auth::user()->id || Auth::user()->role_id <3)
 <h3 class="text-center text-default">Transactions done using this Qrcode:- </h3>
     @include('transactions.table')
 @endif
+</div>

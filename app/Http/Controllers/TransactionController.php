@@ -38,7 +38,7 @@ class TransactionController extends AppBaseController
         }
         else{
 
-        $transactions = Transaction::where('user_id', Auth::user()->id);
+        $transactions = Transaction::where('user_id', Auth::user()->id)->get();
         }
 
         return view('transactions.index')
